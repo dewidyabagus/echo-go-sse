@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SEE Example</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Pengecekan support atau tidaknya EventSource
+        if (typeof (EventSource) !== "undefined") {
+            // Membuat objek EventSource baru
+            // dan menentukan URL halaman mengirimkan update ("demo.php")
+            var source = new EventSource("http://localhost:3000/dashboard");
+
+            // Event ketika pesan di terima
+            source.onmessage = function (e) {
+                document.getElementById("result").innerHTML = e.data;
+            };
+        }
+        else {
+            document.getElementById("result").innerHTML = "Not Support";
+        }
+    </script>
+    <div id="result"></div>
+</body>
+
+</html>
